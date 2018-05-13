@@ -1,0 +1,18 @@
+1.創建資料表
+#auto_increment(一直累加,唯一值)
+
+create table if not exists student(
+
+    `id` int auto_increment primary key,
+    `name` varchar(255) not null default 'null' comment '姓名',
+    `age` tinyint unsigned not null default 0 comment '年齡',
+    `sex` tinyint unsigned not null default 0 comment '性別',
+    `created_at` int not null default 0 comment '新增時間',
+    `updated_at` int not null default 0 comment '修改時間'
+)engine=innodb default charset=utf8 auto_increment=1001 comment='學生表'
+
+2.laravel帳密(暫存)
+#
+
+帳號:laravel
+密碼:eiWeikbOeiyHBlfX
