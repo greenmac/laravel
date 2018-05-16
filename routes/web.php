@@ -81,5 +81,10 @@ Route::get('view', function () {
 //   'as'=>'memberinfo'
 // ]);
 
-route::any('member/{id}',['uses'=>'MemberController@info'])
-->where('id','[0-9]+');
+//route::any('member/{id}',['uses'=>'MemberController@info'])
+//->where('id','[0-9]+');
+
+route::any('test1',['uses'=>'StudentController@test1']);
+route::any('query1',['uses'=>'StudentController@query1']);
+route::any('query2',['uses'=>'StudentController@query2']);
+route::any('query3',['uses'=>'StudentController@query3']);
