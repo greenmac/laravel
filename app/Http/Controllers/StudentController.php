@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+//$create_time=strtotime(date('Y/m/d H:i:s'));
 
 class StudentController extends Controller
 {
+//    $create_time=strtotime(date('Y/m/d H:i:s'));
     public function test1()
     {
         ##新增
@@ -42,11 +44,11 @@ class StudentController extends Controller
 //        );
 //        var_dump($id);
 
-        $bool=DB::table('student')->insert([
-            ['name'=>'黑豹','age'=>18],
-            ['name'=>'黑寡婦','age'=>19],
-        ]);
-        var_dump($bool);
+//        $bool=DB::table('student')->insert([
+//            ['name'=>'黑豹','age'=>18,'start_time'=>'from'],
+//            ['name'=>'黑寡婦','age'=>19],
+//        ]);
+//        var_dump($bool);
     }
 
     ##使用查詢產生器更新數據(PDO)
@@ -88,6 +90,83 @@ class StudentController extends Controller
 //
 //        var_dump($num);
 
-        DB::table('student')->truncate();//清空資料表,非不得已不要用
+//        DB::table('student')->truncate();//清空資料表,非不得已不要用
     }
+
+    public function query4(){
+//       $bool=DB::table('student')->insert([
+//           ['name'=>'鋼鐵人','age'=>30],
+//            ['name'=>'蜘蛛人','age'=>25],
+//            ['name'=>'黑豹','age'=>20],
+//            ['name'=>'黑寡婦','age'=>15],
+//            ['name'=>'浩克','age'=>10],
+//       ]);
+//
+//       var_dump($bool);
+
+//        $student=DB::table('student')->get();
+
+        ##first 得到第一條筆數
+//        $student=DB::table('student')
+//            ->orderby('id','desc')
+//            ->first();
+//        dd($student);
+
+        ##where
+//        $student=DB::table('student')
+//            ->where('id','>=',2)
+//            ->get();
+//        dd($student);
+
+//        $student=DB::table('student')
+//            ->whereRaw('id >= ? and age <= ?',[2,20])
+//            ->get();
+//        dd($student);
+
+        ##pluck返回指定的欄位
+        // $name=DB::table('student')
+        //     ->pluck('name');
+        // dd($name);
+
+        ##pluck返回指定的欄位,id為key值
+        // $name=DB::table('student')
+        //     ->pluck('name','id');
+        // dd($name);
+
+        ##select
+        // $student=DB::table('student')
+        //     ->select('age','name','id')
+        //     ->get();
+        // dd($student);
+
+        ##chunk(目前有錯誤)
+        // echo '<pre>';
+        // DB::table('student')
+        // ->chunk(2,function($student){
+        //     var_dump($student);
+        //
+        //     if(你的條件){
+        //       return false;
+        //     }
+        // });
+    }
+
+    ##聚合函數
+    public function query5(){
+      // $num = DB::table('student')->count('name');
+      // var_dump($num);
+
+      // $max=DB::table('student')->max('age');
+      // var_dump($max);
+
+      // $min=DB::table('student')->min('age');
+      // var_dump($min);
+
+      // $avg=DB::table('student')->avg('age');
+      // var_dump($avg);
+
+      $sum=DB::table('student')->sum('age');
+      var_dump($sum);
+    }
+
 }
