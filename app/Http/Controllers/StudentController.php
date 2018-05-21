@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 //$create_time=strtotime(date('Y/m/d H:i:s'));
+use App\Student;
 
 class StudentController extends Controller
 {
@@ -139,7 +140,7 @@ class StudentController extends Controller
         //     ->get();
         // dd($student);
 
-        ##chunk(目前有錯誤)
+        ##chunk(目前有錯誤),一次查詢幾條為一組
         // echo '<pre>';
         // DB::table('student')
         // ->chunk(2,function($student){
@@ -165,8 +166,45 @@ class StudentController extends Controller
       // $avg=DB::table('student')->avg('age');
       // var_dump($avg);
 
-      $sum=DB::table('student')->sum('age');
-      var_dump($sum);
+     // $sum=DB::table('student')->sum('age');
+     // var_dump($sum);
+    }
+
+    public function orm1()
+    {
+      ## all
+      // $student=Student::all();
+      // dd($student);
+
+      ## find
+      // $student=Student::find(1);
+      // dd($student);
+
+      ## findOrFail
+      // $student=Student::findOrFail(10);
+      // dd($student);
+
+      // $student=Student::get();
+      // dd($student);
+
+      // $student=Student::where('id','>',1)
+      // ->orderBy('age','desc')
+      // ->first();
+      // dd($student);
+
+      ##chunk,一次查詢幾條為一組(上面的chunk不知道為什麼會報錯)
+      // echo '<pre>';
+      // Student::chunk(2,function($student){
+      //   var_dump($student);
+      // });
+
+      ##聚合函數
+      // $num=Student::count();
+      // var_dump($num);
+
+      $max=Student::where('id','>',1)->max('age');
+      var_dump($max);
+
     }
 
 }
