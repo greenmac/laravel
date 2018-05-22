@@ -90,3 +90,4 @@ route::any('query2',['uses'=>'StudentController@query2']);
 route::any('query3',['uses'=>'StudentController@query3']);
 route::any('query4',['uses'=>'StudentController@query4']);
 route::any('orm1',['uses'=>'StudentController@orm1']);
+route::any('orm2',['uses'=>'StudentController@orm2']);

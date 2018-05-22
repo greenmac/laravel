@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-//$create_time=strtotime(date('Y/m/d H:i:s'));
+$created_at=strtotime(date('Y/m/d H:i:s'));
 use App\Student;
 
 class StudentController extends Controller
 {
-//    $create_time=strtotime(date('Y/m/d H:i:s'));
+   // $created_at=strtotime(date('Y/m/d H:i:s'));
     public function test1()
     {
         ##新增
@@ -35,9 +35,9 @@ class StudentController extends Controller
     ##使用查詢產生器更新數據(PDO)
     public function query1()
     {
-//        $bool=DB::table('student')->insert(
-//            ['name'=>'鋼鐵人','age'=>30]
-//        );
+       // $bool=DB::table('student')->insert(
+       //     ['name'=>'鋼鐵人','age'=>30]
+       // );
 //        var_dump($bool);
 
 //        $id=DB::table('student')->insertgetid(
@@ -45,11 +45,17 @@ class StudentController extends Controller
 //        );
 //        var_dump($id);
 
-//        $bool=DB::table('student')->insert([
-//            ['name'=>'黑豹','age'=>18,'start_time'=>'from'],
-//            ['name'=>'黑寡婦','age'=>19],
-//        ]);
-//        var_dump($bool);
+       // $bool=DB::table('student')->insert([
+       //     ['name'=>'黑豹','age'=>18],
+       //     // ['name'=>'黑寡婦','age'=>19],
+       // ]);
+
+       $bool=DB::table('student')
+       ->where('id',9)
+       ->update(['age'=>40]);
+
+       var_dump($bool);
+
     }
 
     ##使用查詢產生器更新數據(PDO)
@@ -202,9 +208,41 @@ class StudentController extends Controller
       // $num=Student::count();
       // var_dump($num);
 
-      $max=Student::where('id','>',1)->max('age');
-      var_dump($max);
-
+      // $max=Student::where('id','>',1)->max('age');
+      // var_dump($max);
     }
 
+    public function orm2(){
+      ##使用模型新增數據
+      // $student=new Student();
+      // $student->name='蟻人';
+      // $student->age='3';
+      // $bool=$student->save();
+      // dd($bool);
+
+      // $student=Student::find(14);
+      // echo $student->created_at;
+
+      // $student=Student::find(14);
+      // echo date('Y-m-s H:i:s',$student->created_at);
+
+      ##使用模型的create方法新增數據
+      // $student=Student::create(
+      //     ['name'=>'黃蜂女','age'=>2]
+      //   );
+      // dd($student);
+
+      ##firstOrCreate(),尋找用戶,如果沒有就顯示並保存
+      // $student=Student::firstOrCreate(
+      //     ['name'=>'黃蜂女2']
+      //   );
+      // dd($student);
+
+      ##firstOrNew(),尋找用戶,如果沒有就顯示,要保存要加save();
+      $student=Student::firstOrNew(
+          ['name'=>'黃蜂女3']
+        );
+      $bool = $student->save();
+      dd($bool);
+    }
 }

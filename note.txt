@@ -1,0 +1,4 @@
+1.timezone
+##config->app{timezone}
+
+'timezone' => 'UTC' §ï¬° 'timezone' => 'Asia/Taipei'
