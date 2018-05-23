@@ -239,10 +239,40 @@ class StudentController extends Controller
       // dd($student);
 
       ##firstOrNew(),尋找用戶,如果沒有就顯示,要保存要加save();
-      $student=Student::firstOrNew(
-          ['name'=>'黃蜂女3']
-        );
-      $bool = $student->save();
-      dd($bool);
+      // $student=Student::firstOrNew(
+      //     ['name'=>'黃蜂女3']
+      //   );
+      // $bool = $student->save();
+      // dd($bool);
+    }
+
+    public function orm3()
+    {
+      ##通過模型更新數據(暫時不能用)
+      // $student=Student::find(17);
+      // $student->name='黃蜂女4';
+      // $bool = $student->save();
+      // var_dump($bool);
+
+      // $num = Student::where('id','>',15)->update(
+      //   ['age'=>'40']
+      // );
+      // var_dump($num);
+    }
+
+    public function orm4()
+    {
+      ##通過模型刪除
+      // $student = Student::find(17);
+      // $bool = $student->delete();
+      // var_dump($bool);
+
+      ##通過主鍵刪除
+      // $num = Student::destroy(16);
+      // $num = Student::destroy([13,12]);
+      // var_dump($num);
+
+      $num = Student::where('id','>',10)->delete();
+      var_dump($num);
     }
 }
