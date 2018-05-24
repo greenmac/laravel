@@ -275,4 +275,9 @@ class StudentController extends Controller
       $num = Student::where('id','>',10)->delete();
       var_dump($num);
     }
+
+    public function section1()
+    {
+      return view('student.section1');
+    }
 }
