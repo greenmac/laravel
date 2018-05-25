@@ -278,6 +278,11 @@ class StudentController extends Controller
 
     public function section1()
     {
-      return view('student.section1');
+      $name='酷寒戰士';
+      $arr=['索爾','洛基','酷寒戰士'];
+      return view('student.section1',[
+        'name'=> $name,
+        'arr'=>$arr
+      ]);
     }
 }
