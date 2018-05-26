@@ -272,17 +272,26 @@ class StudentController extends Controller
       // $num = Student::destroy([13,12]);
       // var_dump($num);
 
-      $num = Student::where('id','>',10)->delete();
-      var_dump($num);
+      // $num = Student::where('id','>',10)->delete();
+      // var_dump($num);
     }
 
     public function section1()
     {
+      // $student=Student::get();//陣列
+      $student=[];//變成空值
+
       $name='酷寒戰士';
       $arr=['索爾','洛基','酷寒戰士'];
       return view('student.section1',[
         'name'=> $name,
-        'arr'=>$arr
+        'arr'=>$arr,
+        'student'=>$student,
       ]);
+    }
+
+    public function urlTest()
+    {
+      return 'urlTest';
     }
 }
