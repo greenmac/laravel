@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 $created_at=strtotime(date('Y/m/d H:i:s'));
 use App\Student;
@@ -293,5 +294,45 @@ class StudentController extends Controller
     public function urlTest()
     {
       return 'urlTest';
+    }
+
+    public function request1(Request $request)
+    {
+       # 1.取值
+       // echo $request->input('name');
+       // echo $request->input('sex','未知');
+
+       // if($request->has('name'))
+       // {
+       //   echo $request->input('name');
+       // }
+       // else
+       // {
+       //   echo '無該參數';
+       // }
+
+       // $res = $request->all();
+       // dd($res);
+
+       # 判斷請求類型
+       // echo $request->method();
+
+       // if ($request->isMethod('get'))
+       // {
+       //   echo 'Yes';
+       // }
+       // else
+       // {
+       //   echo 'No';
+       // }
+       // echo $request->isMethod('post')?'Yes':'No';//三元運算子
+
+       // $res = $request->ajax();
+       // var_dump($res);
+
+       // $res = $request->is('student/*');
+       // var_dump($res);
+
+       echo $request->url();//當前的url
     }
 }
