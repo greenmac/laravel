@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use config\session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 $created_at=strtotime(date('Y/m/d H:i:s'));
@@ -335,4 +336,34 @@ class StudentController extends Controller
 
        echo $request->url();//當前的url
     }
+
+    public function session1(Request $request)
+    {
+      // 1. HTTP request session()
+      // $request->session()->put('key1','value1');
+      // echo $request->session()->get('key1');
+
+      // 2. session()
+      // session()->put('key2','value2');
+      // echo session()->get('key2');
+
+      // 3.Session
+      // 存儲數據到Session
+      Session::put('key3','value3');
+
+      // 獲取Session的值
+      // echo Session::get('key3');
+
+      // 不存在則取默認值
+      // echo Session::get('key4','default');
+
+      // 以數組的形式存儲數據
+      // Session::put(['key4'=>'value4']);
+    }
+
+    public function session2(Request $request)
+    {
+      // echo Session::get('key4','default');
+    }
+
 }

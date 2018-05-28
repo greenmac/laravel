@@ -96,3 +96,9 @@ route::any('orm4',['uses'=>'StudentController@orm4']);
 route::any('section1',['uses'=>'StudentController@section1']);
 route::any('url',['as'=>'url','uses'=>'StudentController@urlTest']);
 route::any('student/request1',['uses'=>'StudentController@request1']);
+
+route::group(['middleware'=>['web']],function()
+{
+  route::any('session1',['uses'=>'StudentController@session1']);
+  route::any('session2',['uses'=>'StudentController@session2']);
+});
